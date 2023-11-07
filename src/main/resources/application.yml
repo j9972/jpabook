@@ -1,0 +1,36 @@
+
+# live server
+devtools:
+  livereload:
+    enabled: true
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url : jdbc:mysql://localhost:3306/jpabook
+    username : ENC(sg/mXdIMcAYkmjaqFrC7vw==)
+    password : ENC(L/t1/F1UtS3lJij5QKqpSF2getaX9bno)
+
+  jpa:
+    open-in-view: true
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        validator:
+          apply_to_ddl : false
+        format_sql: true
+    database: mysql
+
+# for encode of password
+jasypt:
+  encryptor:
+    bean: jasyptStringEncryptor
+
+# hibernate logging
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG

@@ -1,10 +1,12 @@
 package jpabook.jpashop;
 
+import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 // lombok을 설치하면 설정 -> 어노테이션 검색해서 활성화 박스 체크하
 @SpringBootApplication
+@EnableEncryptableProperties
 public class JpashopApplication {
 
 	public static void main(String[] args) {
