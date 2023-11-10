@@ -24,17 +24,30 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	runtimeOnly 'com.mysql:mysql-connector-j'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'com.h2database:h2'
-	runtimeOnly 'com.mysql:mysql-connector-j'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation "com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.3"
+
+	// junit5을 위함
+	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+
+	// query parameter 를 보여준다 -> 운영시스템에 적용하려면 꼭 성능테스트를 하고 사용하는 것이 좋다
+	implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.5.6'
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
 	systemProperty 'jasypt.encryptor.password', findProperty("jasypt.encryptor.password")
+}
+
+sourceSets {
+	test {
+		resources.srcDirs = ['src/test/resources']
+	}
 }

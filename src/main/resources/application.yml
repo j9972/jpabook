@@ -1,36 +1,50 @@
-
-# live server
-devtools:
-  livereload:
-    enabled: true
+#
+## live server
+#devtools:
+#  livereload:
+#    enabled: true
+#
+#spring:
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url : jdbc:mysql://localhost:3306/jpabook
+#    username : ENC(+QskBZhElJo6VS6+LtLDpw==)
+#    password : ENC(IgSnFF57gyqEY3t+Il9nrbehRFtAC/4U)
+#
+#  jpa:
+#    open-in-view: true
+#    hibernate:
+#      ddl-auto: create-drop
+#    #show-sql: true -> ??? ???? ???? ??? ?? ??? logger? ??? ??
+#    properties:
+#      hibernate:
+#        validator:
+#          apply_to_ddl : false
+#        format_sql: true
+#    database: mysql
+#
+## for encode of password
+#jasypt:
+#  encryptor:
+#    bean: jasyptStringEncryptor
 
 spring:
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url : jdbc:mysql://localhost:3306/jpabook
-    username : ENC(sg/mXdIMcAYkmjaqFrC7vw==)
-    password : ENC(L/t1/F1UtS3lJij5QKqpSF2getaX9bno)
+    url: jdbc:h2:tcp://localhost/~/jpabook
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
 
   jpa:
-    open-in-view: true
     hibernate:
-      ddl-auto: create-drop
-    show-sql: true
+      ddl-auto: create
     properties:
       hibernate:
-        validator:
-          apply_to_ddl : false
+        #show_sql: true
         format_sql: true
-    database: mysql
 
-# for encode of password
-jasypt:
-  encryptor:
-    bean: jasyptStringEncryptor
-
-# hibernate logging
 logging:
   level:
-    org:
-      springframework:
-        security: DEBUG
+    org.hibernate.SQL: debug
+    # 운영시스템에 적용하려면 꼭 성능테스트를 하고 사용하는 것이 좋다
+    org.hibernate.orm.jdbc.bind: trace # table 생성할 때, query ? 로 뜨는걸 막아준다 [ 가시성 ]
