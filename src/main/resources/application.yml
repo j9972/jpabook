@@ -34,10 +34,14 @@ spring:
     username: sa
     password:
     driver-class-name: org.h2.Driver
+  # 타임리프 쓰려면 필요함
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
 
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: create-drop
     properties:
       hibernate:
         #show_sql: true
