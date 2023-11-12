@@ -46,6 +46,7 @@ spring:
       hibernate:
         #show_sql: true
         format_sql: true
+        default_batch_fetch_size: 100 # 배치 사이즈 조절을 통해서 N+1이 나더라도 최소화 시킨다
 
 logging:
   level:
